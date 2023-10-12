@@ -17,7 +17,9 @@ return new class extends Migration
             $table->date('date');
             $table->string('descriptor_one')->nullable();
             $table->string('descriptor_two')->nullable();
-            $table->float('amount');
+            $table->integer('amount');
+            $table->string('currency')->default('CAD');
+            $table->float('exchange_rate')->nullable();
             $table->timestamps();
 
             $table->softDeletes();

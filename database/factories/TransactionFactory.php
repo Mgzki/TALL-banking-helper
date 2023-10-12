@@ -25,7 +25,9 @@ class TransactionFactory extends Factory
             'date' => $this->faker->date,
             'descriptor_one' => $this->faker->randomElement($descriptor_one_options),
             'descriptor_two' => $this->faker->randomElement($descriptor_two_options),
-            'amount' => $this->faker->randomElement(['-', '']) . $this->faker->randomFloat(2,0,1000,),
+            'amount' => $this->faker->randomElement(['-', '']) . $this->faker->randomNumber(4),
+            'currency' => 'CAD',
+            'exchange_rate' => null,
             'updated_at' => Carbon::now(),
             'created_at' => Carbon::now(),
         ];

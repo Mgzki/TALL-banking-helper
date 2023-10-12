@@ -16,7 +16,9 @@ class Transaction extends Model
         'date',
         'descriptor_one',
         'descriptor_two',
-        'amount'
+        'amount',
+        'currency',
+        'exchange_rate'
     ];
 
     protected $casts = [
