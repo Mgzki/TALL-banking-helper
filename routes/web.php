@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::view('/', 'landing')->name('home');
 
 Route::middleware('guest')->group(function () {
+
     Route::get('login', Login::class)
         ->name('login');
 
@@ -38,6 +38,7 @@ Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
+    Route::view('dashboard', 'livewire.dashboard')->name('dashboard');
     Route::get('email/verify', Verify::class)
         ->middleware('throttle:6,1')
         ->name('verification.notice');
