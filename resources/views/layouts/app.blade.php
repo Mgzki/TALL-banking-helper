@@ -1,10 +1,11 @@
 @extends('layouts.base')
+@php
+    $routes = ['WOW', 'Route'];
+@endphp
 @section('body')
-    <livewire:navigation-bar />
-    <div class="bg-gray-100">
+    <livewire:top-nav />
+    <div class="flex flex-row">
+        <livewire:side-nav :routes="$routes" />
         @yield('content')
-        @isset($slot)
-            {{ $slot }}
-        @endisset
     </div>
 @endsection
