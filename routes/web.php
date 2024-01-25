@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,13 @@ Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('dashboard')->group(function () {
+//        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', Dashboard::class)->name('dashboard');
+//        Route::get('/banks', [])
+//        Route::get('/account/{account_id}', [DashboardController::class, 'accounts'])->name('accounts');
+        Route::get('/account/{account_id}', Dashboard::class)->name('accounts');
+    });
     Route::get('email/verify', Verify::class)
         ->middleware('throttle:6,1')
         ->name('verification.notice');
